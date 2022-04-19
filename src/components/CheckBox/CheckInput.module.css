@@ -1,0 +1,21 @@
+.check {
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    opacity: 0;
+}
+
+.lblOff {
+    font-size: 0px;
+    border: 2px solid rgb(118, 118, 118);
+    width: 26px;
+    height: 29px;
+    background-color: rgb(245, 245, 245);
+    cursor: pointer;
+}
+.lblOff:hover {
+    background-color: black;
+}
+.lblOn {
+    font-size: 25px;
+}

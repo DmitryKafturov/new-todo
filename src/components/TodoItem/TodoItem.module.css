@@ -1,0 +1,17 @@
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 5px;
+    padding: 0px 5px;
+    background: white;
+}
+
+.complete {
+    text-decoration: line-through;
+    opacity: 0.2;
+}
+.text {
+    color: black;
+}
