@@ -6,9 +6,8 @@ import classes from "./TodoItem.module.css"
 
 
 const TodoItem = ({ post }) => {
-    const { dispatch } = useContext(Context)
     return (
-        <div key={post.id} className={classes.item}>
+        <div className={classes.item}>
             <CheckInput post={post} />
             <span style={{ overflow: 'hidden', width: '380px' }} className={post.checked ? classes.complete : classes.text}>
                 {post.value}

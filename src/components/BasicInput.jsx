@@ -1,8 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Context } from "./Context";
 
-
-
 const BasicInput = () => {
     const [userInput, setUserInput] = useState('')
     const { addPost } = useContext(Context)
@@ -10,7 +8,6 @@ const BasicInput = () => {
     const change = (e) => {
         setUserInput(e.target.value)
     }
-
     const keyDown = (e) => {
         if (e.key === 'Enter') {
             addPost(userInput)
@@ -21,7 +18,6 @@ const BasicInput = () => {
         addPost(userInput)
         setUserInput('')
     }
-
     return (
         <input className="basic"
             placeholder="Какое дело?"
@@ -29,13 +25,9 @@ const BasicInput = () => {
             type='text'
             onChange={change}
             onKeyDown={keyDown}
-            onBlur={blurShow}
-        >
+            onBlur={blurShow} >
         </input >
     )
-
-
-
 }
 
 export default BasicInput

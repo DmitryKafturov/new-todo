@@ -1,18 +1,23 @@
 import React, { useEffect, useReducer } from "react";
 import BasicInput from './components/BasicInput'
+import TodosFooter from './components/TodosFooter'
+import TodosList from './components/TodosList'
+import TodosHeader from './components/TodosHeader'
 import { Context } from "./components/Context";
 import { reducer } from "./components/Reducer";
-import TodoItem from './components/TodoItem/TodoItem'
 
 function App() {
-
-  const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem('posts')) || [])
-
+  const [{ todos, todosState }, dispatch] = useReducer(
+    reducer,
+    {
+      todos: JSON.parse(localStorage.getItem('todos')) || [],
+      todosState: "todoAll"
+    }
+  )
 
   useEffect(() => {
-    localStorage.setItem('posts', JSON.stringify(state))
-  }, [state])
-
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   const addPost = (userInput) => {
     if (userInput) {
@@ -20,20 +25,34 @@ function App() {
         type: 'add',
         payload: userInput
       })
-
     }
   }
 
+  const getVisibleTodos = () => {
+    switch (todosState) {
+      case "todoAll":
+        return todos;
+      case "checked":
+        return todos.filter(todo => todo.checked);
+      case "unChecked":
+        return todos.filter(todo => !todo.checked)
+      default:
+        return todos;
+    }
+  }
 
+  const visibleTodos = getVisibleTodos()
 
   return (
-    <Context.Provider value={{ dispatch, addPost }}>
+    <Context.Provider value={{ dispatch, addPost, visibleTodos }}>
       <div className="App">
-        <h1 className="title">TODO :{state.length}</h1>
+        <TodosHeader length={todos.length} />
         <BasicInput />
-        {state.map(post => <TodoItem post={post} key={post.id} />)}
+        <TodosList />
+        <TodosFooter />
       </div>
     </Context.Provider >
+
   );
 }
 

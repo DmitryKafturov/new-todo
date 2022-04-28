@@ -1,0 +1,28 @@
+.btnComplete {
+}
+.btnNotComplete {
+}
+.btnOllDelete {
+}
+.btns {
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 5px;
+}
+.buttonsBlock {
+    display: block;
+}
+.btn {
+    border: 2px solid rgb(118, 118, 118);
+    border-radius: 3px;
+    background: white;
+}
+.btn:hover {
+    background-color: black;
+    color: white;
+}
+.btn:focus {
+    background-color: rgb(212, 209, 209);
+    color: #000;
+}

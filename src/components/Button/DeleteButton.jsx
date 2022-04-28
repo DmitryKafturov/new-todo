@@ -11,7 +11,7 @@ const DeleteButton = ({ post }) => {
     return (
         <button
             onClick={() => dispatch({
-                type: 'remove',
+                type: 'removeItem',
                 payload: post.id
             })}
             className={` ${delBtn}`}
